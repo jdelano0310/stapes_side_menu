@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 
-class MyPageArea extends StatelessWidget {
-  MyPageArea(page, {Key? key}) : super(key: key);
+class MyPageArea extends StatefulWidget {
+  final PageController page;
+  MyPageArea({Key? key, required this.page}) : super(key: key);
 
+  @override
+  State<MyPageArea> createState() => _MyPageAreaState();
+}
+
+class _MyPageAreaState extends State<MyPageArea> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: PageView(
-        controller: page,
+        controller: widget.page,
         children: [
           Container(
             color: Colors.white,
