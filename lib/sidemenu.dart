@@ -22,6 +22,7 @@ class _MySideMenuState extends State<MySideMenu> {
         hoverColor: const Color.fromARGB(255, 6, 49, 85),
         selectedColor: const Color.fromARGB(255, 6, 49, 85),
         selectedTitleTextStyle: const TextStyle(color: Colors.white),
+        unselectedTitleTextStyle: const TextStyle(color: Colors.blueGrey),
         selectedIconColor: Colors.white,
         // decoration: BoxDecoration(
         //   borderRadius: BorderRadius.all(Radius.circular(10)),
