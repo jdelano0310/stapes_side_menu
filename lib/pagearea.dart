@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class MyPageArea extends StatefulWidget {
   final PageController page;
-  MyPageArea({Key? key, required this.page}) : super(key: key);
+  const MyPageArea({Key? key, required this.page}) : super(key: key);
 
   @override
   State<MyPageArea> createState() => _MyPageAreaState();
@@ -14,53 +14,51 @@ class _MyPageAreaState extends State<MyPageArea> {
     return Expanded(
       child: PageView(
         controller: widget.page,
-        children: [
-          Container(
-            color: Colors.white,
-            child: const Center(
-              child: Text(
-                'Dashboard',
-                style: TextStyle(fontSize: 35),
-              ),
-            ),
+        children: const [
+          PageContainer(
+            value: 'The Latest',
           ),
-          Container(
-            color: Colors.white,
-            child: const Center(
-              child: Text(
-                'Users',
-                style: TextStyle(fontSize: 35),
-              ),
-            ),
+          PageContainer(
+            value: 'Podcast Host',
           ),
-          Container(
-            color: Colors.white,
-            child: const Center(
-              child: Text(
-                'Files',
-                style: TextStyle(fontSize: 35),
-              ),
-            ),
+          PageContainer(
+            value: 'Podcast Guest',
           ),
-          Container(
-            color: Colors.white,
-            child: const Center(
-              child: Text(
-                'Download',
-                style: TextStyle(fontSize: 35),
-              ),
-            ),
+          PageContainer(
+            value: 'Articles',
           ),
-          Container(
-            color: Colors.white,
-            child: const Center(
-              child: Text(
-                'Settings',
-                style: TextStyle(fontSize: 35),
-              ),
-            ),
+          PageContainer(
+            value: 'TV & Movies',
+          ),
+          PageContainer(
+            value: 'About Joe',
+          ),
+          PageContainer(
+            value: 'Highlights',
+          ),
+          PageContainer(
+            value: 'Archive',
           ),
         ],
+      ),
+    );
+  }
+}
+
+class PageContainer extends StatelessWidget {
+  final String value;
+
+  const PageContainer({Key? key, required this.value}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      child: Center(
+        child: Text(
+          value,
+          style: const TextStyle(fontSize: 35),
+        ),
       ),
     );
   }

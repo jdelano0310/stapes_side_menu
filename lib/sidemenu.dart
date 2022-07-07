@@ -91,21 +91,27 @@ class _MySideMenuState extends State<MySideMenu> {
           icon: const Icon(Icons.tv),
         ),
         SideMenuItem(
-          priority: 6,
+          priority: 5,
           title: 'About Joe',
-          onTap: () async {},
+          onTap: () {
+            widget.page.jumpToPage(5);
+          },
           icon: const Icon(Icons.history),
         ),
         SideMenuItem(
           priority: 6,
           title: 'Highlights',
-          onTap: () async {},
+          onTap: () {
+            widget.page.jumpToPage(6);
+          },
           icon: const Icon(Icons.highlight),
         ),
         SideMenuItem(
-          priority: 6,
+          priority: 7,
           title: 'Archive',
-          onTap: () async {},
+          onTap: () {
+            widget.page.jumpToPage(7);
+          },
           icon: const Icon(Icons.archive),
         ),
       ],
