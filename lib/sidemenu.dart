@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_sidemenu/easy_sidemenu.dart';
+import 'package:rounded_background_text/rounded_background_text.dart';
 
 class MySideMenu extends StatefulWidget {
   final PageController page;
@@ -18,6 +19,7 @@ class _MySideMenuState extends State<MySideMenu> {
       //   print(mode);
       // },
       style: SideMenuStyle(
+        openSideMenuWidth: 250,
         displayMode: SideMenuDisplayMode.auto,
         hoverColor: const Color.fromARGB(255, 6, 49, 85),
         selectedColor: const Color.fromARGB(255, 6, 49, 85),
@@ -46,13 +48,7 @@ class _MySideMenuState extends State<MySideMenu> {
           ),
         ],
       ),
-      footer: const Padding(
-        padding: EdgeInsets.all(8.0),
-        child: Text(
-          'An unofficial fan site for all, well most, things Stapes.',
-          style: TextStyle(fontSize: 15),
-        ),
-      ),
+      footer: textInforArea(),
       items: [
         SideMenuItem(
           priority: 0,
@@ -76,7 +72,7 @@ class _MySideMenuState extends State<MySideMenu> {
           onTap: () {
             widget.page.jumpToPage(2);
           },
-          icon: const Icon(Icons.file_copy_rounded),
+          icon: const Icon(Icons.supervisor_account),
         ),
         SideMenuItem(
           priority: 3,
@@ -84,7 +80,7 @@ class _MySideMenuState extends State<MySideMenu> {
           onTap: () {
             widget.page.jumpToPage(3);
           },
-          icon: const Icon(Icons.download),
+          icon: const Icon(Icons.newspaper),
         ),
         SideMenuItem(
           priority: 4,
@@ -92,27 +88,74 @@ class _MySideMenuState extends State<MySideMenu> {
           onTap: () {
             widget.page.jumpToPage(4);
           },
-          icon: const Icon(Icons.settings),
+          icon: const Icon(Icons.tv),
         ),
         SideMenuItem(
           priority: 6,
-          title: 'Back History',
+          title: 'About Joe',
           onTap: () async {},
-          icon: const Icon(Icons.exit_to_app),
+          icon: const Icon(Icons.history),
         ),
         SideMenuItem(
           priority: 6,
           title: 'Highlights',
           onTap: () async {},
-          icon: const Icon(Icons.exit_to_app),
+          icon: const Icon(Icons.highlight),
         ),
         SideMenuItem(
           priority: 6,
           title: 'Archive',
           onTap: () async {},
-          icon: const Icon(Icons.exit_to_app),
+          icon: const Icon(Icons.archive),
         ),
       ],
     );
   }
+}
+
+Text textInformationArea() {
+  return Text(
+    'An unofficial fan site for all, well most, things Stapes.',
+    textAlign: TextAlign.center,
+    style: TextStyle(
+      background: Paint()
+        ..color = const Color.fromARGB(255, 6, 49, 85)
+        ..strokeWidth = 15
+        ..strokeJoin = StrokeJoin.round
+        ..strokeCap = StrokeCap.round
+        ..style = PaintingStyle.stroke,
+      color: Colors.grey,
+    ),
+  );
+}
+
+RoundedBackgroundText rndtext() {
+  return RoundedBackgroundText(
+    'An unofficial fan site for all\nwell most, things Stapes.',
+    style: const TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.bold,
+      color: Colors.grey,
+    ),
+    backgroundColor: const Color.fromARGB(255, 6, 49, 85),
+  );
+}
+
+Widget textInforArea() {
+  return Container(
+    width: 200,
+    height: 50,
+    color: const Color.fromARGB(255, 6, 49, 85),
+    child: const Center(
+      child: Text(
+        'An unofficial fan site for all, well most, things Stapes.',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.bold,
+          color: Colors.grey,
+        ),
+      ),
+    ),
+  );
 }
