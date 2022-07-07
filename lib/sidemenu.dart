@@ -119,34 +119,6 @@ class _MySideMenuState extends State<MySideMenu> {
   }
 }
 
-Text textInformationArea() {
-  return Text(
-    'An unofficial fan site for all, well most, things Stapes.',
-    textAlign: TextAlign.center,
-    style: TextStyle(
-      background: Paint()
-        ..color = const Color.fromARGB(255, 6, 49, 85)
-        ..strokeWidth = 15
-        ..strokeJoin = StrokeJoin.round
-        ..strokeCap = StrokeCap.round
-        ..style = PaintingStyle.stroke,
-      color: Colors.grey,
-    ),
-  );
-}
-
-RoundedBackgroundText rndtext() {
-  return RoundedBackgroundText(
-    'An unofficial fan site for all\nwell most, things Stapes.',
-    style: const TextStyle(
-      fontSize: 12,
-      fontWeight: FontWeight.bold,
-      color: Colors.grey,
-    ),
-    backgroundColor: const Color.fromARGB(255, 6, 49, 85),
-  );
-}
-
 Widget textInforArea() {
   return Container(
     width: 200,
