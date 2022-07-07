@@ -29,7 +29,7 @@ class _MySideMenuState extends State<MySideMenu> {
         // decoration: BoxDecoration(
         //   borderRadius: BorderRadius.all(Radius.circular(10)),
         // ),
-        backgroundColor: const Color.fromARGB(255, 4, 59, 85),
+        backgroundColor: const Color.fromARGB(255, 54, 64, 80),
       ),
       title: Column(
         children: [
@@ -145,7 +145,13 @@ Widget textInforArea() {
   return Container(
     width: 200,
     height: 50,
-    color: const Color.fromARGB(255, 6, 49, 85),
+    decoration: const BoxDecoration(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(10),
+        topRight: Radius.circular(10),
+      ),
+      color: Color.fromARGB(255, 42, 49, 61),
+    ),
     child: const Center(
       child: Text(
         'An unofficial fan site for all, well most, things Stapes.',
