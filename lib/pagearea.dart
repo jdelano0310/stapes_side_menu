@@ -57,7 +57,7 @@ class PageContainer extends StatelessWidget {
       child: Center(
         child: Text(
           value,
-          style: const TextStyle(fontSize: 35),
+          style: const TextStyle(fontSize: 24),
         ),
       ),
     );
