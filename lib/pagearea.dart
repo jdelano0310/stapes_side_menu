@@ -16,43 +16,16 @@ class _MyPageAreaState extends State<MyPageArea> {
       child: PageView(
         controller: widget.page,
         children: const [
-          PageContainer(
-            child: TheLatest(),
-          ),
-          PageContainer(
-            child: Text('Podcast Host'),
-          ),
-          PageContainer(
-            child: Text('Podcast Guest'),
-          ),
-          PageContainer(
-            child: Text('Articles'),
-          ),
-          PageContainer(
-            child: Text('TV & Movies'),
-          ),
-          PageContainer(
-            child: Text('About Joe'),
-          ),
-          PageContainer(
-            child: Text('Highlights'),
-          ),
-          PageContainer(
-            child: Text('Archive'),
-          ),
+          TheLatest(),
+          Text('Podcast Host'),
+          Text('Podcast Guest'),
+          Text('Articles'),
+          Text('TV & Movies'),
+          Text('About Joe'),
+          Text('Highlights'),
+          Text('Archive')
         ],
       ),
     );
-  }
-}
-
-class PageContainer extends StatelessWidget {
-  final Widget child;
-
-  const PageContainer({Key? key, required this.child}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(child: child);
   }
 }

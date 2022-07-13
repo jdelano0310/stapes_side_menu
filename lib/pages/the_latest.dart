@@ -14,14 +14,12 @@ class _TheLatest extends State<TheLatest> {
 
   @override
   void initState() {
-    debugPrint('initState');
     readJson();
     super.initState();
   }
 
   // Fetch content from the json file
   Future<void> readJson() async {
-    debugPrint('in readJson');
     final String response =
         await rootBundle.loadString('data/standupdates.json');
     final data = await json.decode(response);
@@ -39,21 +37,25 @@ class _TheLatest extends State<TheLatest> {
 Widget standupdates(standupDates) {
   // Display the data loaded from sample.json
   return standupDates.isNotEmpty
-      ? Expanded(
-          child: ListView.builder(
-            itemCount: standupDates.length,
-            itemBuilder: (context, index) {
-              return Card(
-                color: index % 2 == 0 ? Colors.grey : Colors.white,
-                margin: const EdgeInsets.all(10),
-                child: ListTile(
-                  leading: Text(standupDates[index]["date-time"]),
-                  title: Text(standupDates[index]["establishment"]),
-                  subtitle: const Text("Tickets"),
-                ),
-              );
-            },
-          ),
+      ? Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                itemCount: standupDates.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    color: index % 2 == 0 ? Colors.grey : Colors.white,
+                    margin: const EdgeInsets.all(10),
+                    child: ListTile(
+                      leading: Text(standupDates[index]["date-time"]),
+                      title: Text(standupDates[index]["establishment"]),
+                      subtitle: const Text("Tickets"),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
         )
       : const Text("nothing to put here");
 }
