@@ -1,0 +1,40 @@
+{
+    "items": [
+      {
+        "date-time": "July 14th 7pm",
+        "establishment": "Green Bay Distillery",
+        "url": "https://www.greenbaydistillery.com/",
+        "ticket-url": "https://www.greenbaydistillery.com/events/samrob"
+      },
+      {
+        "date-time": "July 15th 8pm",
+        "establishment": "Taytro's Bar and Bistro",
+        "url": "https://taytros.com/",
+        "ticket-url": "https://t.co/MEcn5xwJwk"
+      },
+      {
+        "date-time": "July 16th 7pm",
+        "establishment": "The Liberty",
+        "url": "https://historiclibertytheater.org",
+        "ticket-url": "https://www.eventbrite.com/e/british-comedian-sam-rhodes-at-the-liberty-tickets-354261765477?mibextid=DqYSjB&fs=e&s=cl"
+      },
+      {
+        "date-time": "July 19th 7pm",
+        "establishment": "Comedy Works Denver",
+        "url": "https://www.comedyworks.com",
+        "ticket-url": "https://www.comedyworks.com/comedians/new-talent-night"
+      },
+      {
+        "date-time": "July 31st 7pm",
+        "establishment": "NOTTINGHAM: Canalhouse",
+        "url": "https://www.castlerockbrewery.co.uk/pubs/canalhouse/",
+        "ticket-url": "https://www.wegottickets.com/event/552265"
+      },
+      {
+        "date-time": "Aug 5th - 13th 10pm",
+        "establishment": "Fringe Festival",
+        "url": "https://www.edfringe.com/",
+        "ticket-url": "https://tickets.edfringe.com/whats-on#q=%22american%20apologist%22"
+      }
+    ]
+  }

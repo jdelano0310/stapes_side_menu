@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stapes_side_menu/pages/theLatest.dart';
+import 'package:stapes_side_menu/pages/the_latest.dart';
 
 class MyPageArea extends StatefulWidget {
   final PageController page;
@@ -53,9 +53,6 @@ class PageContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Center(child: child),
-    );
+    return Container(child: child);
   }
 }
