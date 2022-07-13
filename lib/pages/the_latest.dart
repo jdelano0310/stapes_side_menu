@@ -37,25 +37,20 @@ class _TheLatest extends State<TheLatest> {
 Widget standupdates(standupDates) {
   // Display the data loaded from sample.json
   return standupDates.isNotEmpty
-      ? Column(
-          children: [
-            Expanded(
-              child: ListView.builder(
-                itemCount: standupDates.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    color: index % 2 == 0 ? Colors.grey : Colors.white,
-                    margin: const EdgeInsets.all(10),
-                    child: ListTile(
-                      leading: Text(standupDates[index]["date-time"]),
-                      title: Text(standupDates[index]["establishment"]),
-                      subtitle: const Text("Tickets"),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
-        )
+      ? Column(children: [
+          const Text('Stand-up Dates'),
+          Table(border: TableBorder.all(color: Colors.black), columnWidths: {
+            0: FixedColumnWidth(100.0),
+            1: FixedColumnWidth(100.0),
+            2: FixedColumnWidth(100.0)
+          }, children: [
+            for (var item in standupDates)
+              TableRow(children: [
+                Text(item['date-time']),
+                Text(item['establishment']),
+                Text('Tickets')
+              ])
+          ])
+        ])
       : const Text("nothing to put here");
 }
