@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TheLatest extends StatefulWidget {
-  final PageController page;
-  const TheLatest({Key? key, required this.page}) : super(key: key);
+  const TheLatest({Key? key}) : super(key: key);
 
   @override
   State<TheLatest> createState() => _TheLatestState();
@@ -18,7 +17,7 @@ class _TheLatestState extends State<TheLatest> {
         child: Material(
           elevation: 4.0,
           borderRadius: BorderRadius.circular(5.0),
-          color: index % 2 == 0 ? Colors.cyan : Colors.deepOrange,
+          color: index % 2 == 0 ? Colors. : Colors.,
           child: Center(
             child: Text(index.toString()),
           ),
