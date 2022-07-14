@@ -72,37 +72,32 @@ Widget standupdates(standupDates) {
                 ),
               ],
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: FittedBox(
-                child: Table(columnWidths: const {
-                  0: FlexColumnWidth(.33),
-                  1: FlexColumnWidth(.33),
-                  2: FlexColumnWidth(.33),
-                }, children: [
-                  for (var item in standupDates)
-                    TableRow(
-                        children: [
-                          TableCellPadded(child: Text(item['date-time'])),
-                          TableCellPadded(
-                            child: TableURLData(
-                              displayText: item['establishment'],
-                              url: item['url'],
-                            ),
-                          ),
-                          TableCellPadded(
-                            child: TableURLData(
-                              displayText: 'Tickets',
-                              url: item['ticket-url'],
-                            ),
-                          )
-                        ],
-                        decoration: int.parse(item['row']) % 2 == 0
-                            ? const BoxDecoration(color: Colors.white)
-                            : BoxDecoration(color: Colors.grey[200]))
-                ]),
-              ),
-            )
+            Table(columnWidths: const {
+              0: FlexColumnWidth(.33),
+              1: FlexColumnWidth(.33),
+              2: FlexColumnWidth(.33),
+            }, children: [
+              for (var item in standupDates)
+                TableRow(
+                    children: [
+                      TableCellPadded(child: Text(item['date-time'])),
+                      TableCellPadded(
+                        child: TableURLData(
+                          displayText: item['establishment'],
+                          url: item['url'],
+                        ),
+                      ),
+                      TableCellPadded(
+                        child: TableURLData(
+                          displayText: 'Tickets',
+                          url: item['ticket-url'],
+                        ),
+                      )
+                    ],
+                    decoration: int.parse(item['row']) % 2 == 0
+                        ? const BoxDecoration(color: Colors.white)
+                        : BoxDecoration(color: Colors.grey[200]))
+            ])
           ]),
         )
       : const Text("nothing to put here");
