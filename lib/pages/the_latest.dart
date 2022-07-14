@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/link.dart';
 
 class TheLatest extends StatefulWidget {
   const TheLatest({Key? key}) : super(key: key);
@@ -77,7 +78,24 @@ Widget standupdates(standupDates) {
                     children: [
                       TableCellPadded(child: Text(item['date-time'])),
                       TableCellPadded(child: Text(item['establishment'])),
-                      const TableCellPadded(child: Text('Tickets'))
+                      TableCellPadded(
+                        child: Link(
+                          uri: Uri.parse(item['ticket-url']),
+                          builder: (context, followLink) => MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: GestureDetector(
+                              onTap: followLink,
+                              child: const Text(
+                                'Tickets',
+                                style: TextStyle(
+                                  color: Colors.red,
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
                     ],
                     decoration: int.parse(item['row']) % 2 == 0
                         ? const BoxDecoration(color: Colors.white)
