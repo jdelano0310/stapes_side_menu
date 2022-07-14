@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:url_launcher/link.dart';
 
 class TheLatest extends StatefulWidget {
@@ -43,11 +44,14 @@ Widget standupdates(standupDates) {
           child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
             Row(
               children: const [
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    'Upcoming Stand-up dates',
-                    style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      'Upcoming Stand-up dates',
+                      style:
+                          TextStyle(fontSize: 26, fontWeight: FontWeight.w800),
+                    ),
                   ),
                 ),
               ],
@@ -77,23 +81,16 @@ Widget standupdates(standupDates) {
                 TableRow(
                     children: [
                       TableCellPadded(child: Text(item['date-time'])),
-                      TableCellPadded(child: Text(item['establishment'])),
                       TableCellPadded(
-                        child: Link(
-                          uri: Uri.parse(item['ticket-url']),
-                          builder: (context, followLink) => MouseRegion(
-                            cursor: SystemMouseCursors.click,
-                            child: GestureDetector(
-                              onTap: followLink,
-                              child: const Text(
-                                'Tickets',
-                                style: TextStyle(
-                                  color: Colors.red,
-                                  decoration: TextDecoration.underline,
-                                ),
-                              ),
-                            ),
-                          ),
+                        child: TableURLData(
+                          displayText: item['establishment'],
+                          url: item['url'],
+                        ),
+                      ),
+                      TableCellPadded(
+                        child: TableURLData(
+                          displayText: 'Tickets',
+                          url: item['ticket-url'],
                         ),
                       )
                     ],
@@ -120,4 +117,29 @@ class TableCellPadded extends StatelessWidget {
       verticalAlignment: verticalAlignment ?? TableCellVerticalAlignment.middle,
       child: Padding(
           padding: padding ?? const EdgeInsets.all(10.0), child: child));
+}
+
+class TableURLData extends StatelessWidget {
+  final String url;
+  final String displayText;
+
+  const TableURLData({super.key, required this.url, required this.displayText});
+
+  @override
+  Link build(BuildContext context) => Link(
+        uri: Uri.parse(url),
+        builder: (context, followLink) => MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: GestureDetector(
+            onTap: followLink,
+            child: Text(
+              displayText,
+              style: TextStyle(
+                color: HexColor('#c94663'),
+                decoration: TextDecoration.underline,
+              ),
+            ),
+          ),
+        ),
+      );
 }
