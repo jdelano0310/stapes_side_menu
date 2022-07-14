@@ -37,19 +37,42 @@ class _TheLatest extends State<TheLatest> {
 Widget standupdates(standupDates) {
   // Display the data loaded from sample.json
   return standupDates.isNotEmpty
-      ? Column(children: [
-          const Text('Stand-up Dates'),
-          Table(border: TableBorder.all(color: Colors.black), columnWidths: {
-            0: FixedColumnWidth(100.0),
-            1: FixedColumnWidth(100.0),
-            2: FixedColumnWidth(100.0)
+      ? Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+          Row(
+            children: const [
+              Text(
+                'Upcoming Stand-up dates',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
+              ),
+            ],
+          ),
+          Row(
+            children: const [
+              Text(
+                'Catch Joe entertaining the masses with his stand-up routine!',
+                style: TextStyle(
+                  fontSize: 26,
+                  color: Colors.grey,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
+            ],
+          ),
+          Table(columnWidths: const {
+            0: FlexColumnWidth(.33),
+            1: FlexColumnWidth(.33),
+            2: FlexColumnWidth(.33),
           }, children: [
             for (var item in standupDates)
-              TableRow(children: [
-                Text(item['date-time']),
-                Text(item['establishment']),
-                Text('Tickets')
-              ])
+              TableRow(
+                  children: [
+                    Text(item['date-time']),
+                    Text(item['establishment']),
+                    const Text('Tickets')
+                  ],
+                  decoration: int.parse(item['row']) % 2 == 0
+                      ? const BoxDecoration(color: Colors.white)
+                      : BoxDecoration(color: Colors.grey[200]))
           ])
         ])
       : const Text("nothing to put here");
