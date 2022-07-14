@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:stapes_side_menu/pagearea.dart';
 import 'package:stapes_side_menu/sidemenu.dart';
 
@@ -14,7 +15,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Joe STAPES Stapleton',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blueGrey,
+        textTheme: GoogleFonts.openSansTextTheme(
+          Theme.of(context).textTheme,
+        ),
       ),
       home: const MyHomePage(title: 'Joe STAPES Stapleton'),
       debugShowCheckedModeBanner: false,

@@ -37,43 +37,69 @@ class _TheLatest extends State<TheLatest> {
 Widget standupdates(standupDates) {
   // Display the data loaded from sample.json
   return standupDates.isNotEmpty
-      ? Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-          Row(
-            children: const [
-              Text(
-                'Upcoming Stand-up dates',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
-              ),
-            ],
-          ),
-          Row(
-            children: const [
-              Text(
-                'Catch Joe entertaining the masses with his stand-up routine!',
-                style: TextStyle(
-                  fontSize: 26,
-                  color: Colors.grey,
-                  fontStyle: FontStyle.italic,
+      ? Padding(
+          padding: const EdgeInsets.all(25.0),
+          child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+            Row(
+              children: const [
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'Upcoming Stand-up dates',
+                    style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800),
+                  ),
                 ),
-              ),
-            ],
-          ),
-          Table(columnWidths: const {
-            0: FlexColumnWidth(.33),
-            1: FlexColumnWidth(.33),
-            2: FlexColumnWidth(.33),
-          }, children: [
-            for (var item in standupDates)
-              TableRow(
-                  children: [
-                    Text(item['date-time']),
-                    Text(item['establishment']),
-                    const Text('Tickets')
-                  ],
-                  decoration: int.parse(item['row']) % 2 == 0
-                      ? const BoxDecoration(color: Colors.white)
-                      : BoxDecoration(color: Colors.grey[200]))
-          ])
-        ])
+              ],
+            ),
+            Row(
+              children: const [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      'Catch Joe entertaining the masses with his stand-up routine!',
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Table(columnWidths: const {
+              0: FlexColumnWidth(.33),
+              1: FlexColumnWidth(.33),
+              2: FlexColumnWidth(.33),
+            }, children: [
+              for (var item in standupDates)
+                TableRow(
+                    children: [
+                      TableCellPadded(child: Text(item['date-time'])),
+                      TableCellPadded(child: Text(item['establishment'])),
+                      const TableCellPadded(child: Text('Tickets'))
+                    ],
+                    decoration: int.parse(item['row']) % 2 == 0
+                        ? const BoxDecoration(color: Colors.white)
+                        : BoxDecoration(color: Colors.grey[200]))
+            ])
+          ]),
+        )
       : const Text("nothing to put here");
+}
+
+class TableCellPadded extends StatelessWidget {
+  final EdgeInsets? padding;
+  final Widget child;
+  final TableCellVerticalAlignment? verticalAlignment;
+
+  const TableCellPadded(
+      {Key? key, required this.child, this.padding, this.verticalAlignment})
+      : super(key: key);
+
+  @override
+  TableCell build(BuildContext context) => TableCell(
+      verticalAlignment: verticalAlignment ?? TableCellVerticalAlignment.middle,
+      child: Padding(
+          padding: padding ?? const EdgeInsets.all(10.0), child: child));
 }
