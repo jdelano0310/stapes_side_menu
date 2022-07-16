@@ -32,8 +32,26 @@ class _TheLatest extends State<TheLatest> {
 
   @override
   Widget build(BuildContext context) {
-    return standupdates(_items);
+    return Column(
+      children: [
+        Expanded(child: standupdates(_items)),
+        Expanded(child: theLatestItems()),
+      ],
+    );
   }
+}
+
+Widget theLatestItems() {
+  return ListView.builder(
+      itemCount: 8,
+      itemBuilder: (context, index) {
+        return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              color: Colors.deepPurple[300],
+              height: 120,
+            ));
+      });
 }
 
 Widget standupdates(standupDates) {
