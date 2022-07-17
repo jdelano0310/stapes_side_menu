@@ -2,8 +2,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:logging/logging.dart';
 import 'package:url_launcher/link.dart';
 import 'dart:math' as math;
+
+final log = Logger('ExampleLogger');
 
 class TheLatest extends StatefulWidget {
   const TheLatest({Key? key}) : super(key: key);
@@ -65,16 +68,16 @@ List<Container> theLatestItems(theLatestItems) {
   return List.generate(
     theLatestItems.length,
     (index) => Container(
-        padding: const EdgeInsets.all(8.0),
-        color: Colors.grey[300],
-        height: 120,
-        child: thelatestcard(
-            theLatestItems[index]) //thelatestcard(theLatestItems[index]),
-        ),
+      padding: const EdgeInsets.all(8.0),
+      color: Colors.grey[300],
+      height: 120,
+      child: thelatestcard(theLatestItems[index]),
+    ),
   );
 }
 
 Widget thelatestcard(theLatestItem) {
+  debugPrint(theLatestItem.toString());
   var item = LatestItem.fromJson(theLatestItem);
 
   return Center(
@@ -255,65 +258,34 @@ class TableURLData extends StatelessWidget {
       );
 }
 
-class xLatest {
-  xLatest(
-      {required this.date,
-      required this.title,
-      required this.subtitle,
-      required this.url,
-      required this.imagename,
-      required this.excerpt});
-
-  final String date; // non-nullable
-  final String title; // non-nullable
-  final String subtitle; // non-nullable
-  final String url; // non-nullable
-  final String imagename; // non-nullable
-  final String excerpt; // non-nullable
-
-  factory xLatest.fromJson(Map<String, dynamic> data) {
-    final date = data['date'] as String; // cast as non-nullable String
-    final title = data['title'] as String; // cast as non-nullable String
-    final subtitle = data['subtitle'] as String; // cast as non-nullable String
-    final url = data['url'] as String; // cast as non-nullable String
-    final imagename =
-        data['imagename'] as String; // cast as non-nullable String
-    final excerpt = data['excerpt'] as String; // cast as non-nullable String
-    return xLatest(
-        date: date,
-        title: title,
-        subtitle: subtitle,
-        url: url,
-        imagename: imagename,
-        excerpt: excerpt);
-  }
-}
-
 class LatestItem {
+  final String row;
   final String date; // non-nullable
   final String title; // non-nullable
   final String subtitle; // non-nullable
   final String url; // non-nullable
-  final String imagename; // non-nullable
+  final String image; // non-nullable
   final String excerpt; // non-nullable
 
-  LatestItem(this.date, this.title, this.subtitle, this.url, this.imagename,
-      this.excerpt);
+  LatestItem(this.row, this.date, this.title, this.subtitle, this.url,
+      this.image, this.excerpt);
 
   LatestItem.fromJson(Map<String, dynamic> json)
-      : date = json['date'],
+      : row = json['row'],
+        date = json['date'],
         title = json['title'],
         subtitle = json['subtitle'],
         url = json['url'],
-        imagename = json['imagename'],
+        image = json['image'],
         excerpt = json['excerpt'];
 
   Map<String, dynamic> toJson() => {
+        'row': row,
         'date': date,
         'title': title,
         'subtitle': subtitle,
         'url': url,
-        'imagename': imagename,
+        'imagename': image,
         'excerpt': excerpt
       };
 }
