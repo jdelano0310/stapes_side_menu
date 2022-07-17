@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:url_launcher/link.dart';
+import 'dart:math' as math;
 
 class TheLatest extends StatefulWidget {
   const TheLatest({Key? key}) : super(key: key);
@@ -32,93 +33,140 @@ class _TheLatest extends State<TheLatest> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(child: standupdates(_items)),
-        Expanded(child: theLatestItems()),
+    final scrollController = ScrollController();
+    return CustomScrollView(
+      controller: scrollController,
+      slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: _SliverAppBarDelegate(
+            minHeight: 400,
+            maxHeight: 400,
+            child: standupdates(_items),
+          ),
+        ),
+        SliverList(
+          delegate: SliverChildListDelegate(theLatestItems()),
+        )
       ],
     );
   }
 }
 
-Widget theLatestItems() {
-  return ListView.builder(
-      itemCount: 8,
-      itemBuilder: (context, index) {
-        return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              color: Colors.deepPurple[300],
-              height: 120,
-            ));
-      });
+List<Container> theLatestItems() {
+  return List.generate(
+    8,
+    (index) => Container(
+      padding: const EdgeInsets.all(8.0),
+      color: Colors.grey[300],
+      height: 120,
+      child: Text('An article #$index'),
+    ),
+  );
+}
+
+class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
+  _SliverAppBarDelegate({
+    required this.minHeight,
+    required this.maxHeight,
+    required this.child,
+  });
+
+  final double minHeight;
+  final double maxHeight;
+  final Widget child;
+
+  @override
+  double get minExtent => minHeight;
+
+  @override
+  double get maxExtent => math.max(maxHeight, minHeight);
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return SizedBox.expand(child: child);
+  }
+
+  @override
+  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
+    return maxHeight != oldDelegate.maxHeight ||
+        minHeight != oldDelegate.minHeight ||
+        child != oldDelegate.child;
+  }
 }
 
 Widget standupdates(standupDates) {
   // Display the data loaded from sample.json
   return standupDates.isNotEmpty
-      ? Padding(
-          padding: const EdgeInsets.all(25.0),
-          child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-            Row(
-              children: const [
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      'Upcoming Stand-up dates',
-                      style:
-                          TextStyle(fontSize: 26, fontWeight: FontWeight.w800),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: const [
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      'Catch Joe entertaining the masses with his stand-up routine!',
-                      style: TextStyle(
-                        fontSize: 22,
-                        color: Colors.grey,
+      ? Container(
+          decoration: BoxDecoration(color: Colors.grey[100]),
+          child: Padding(
+            padding: const EdgeInsets.all(25.0),
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+              Row(
+                children: const [
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        'Upcoming Stand-up dates',
+                        style: TextStyle(
+                          fontSize: 26,
+                          fontWeight: FontWeight.w800,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            Expanded(
-              child: Table(columnWidths: const {
-                0: FlexColumnWidth(.33),
-                1: FlexColumnWidth(.33),
-                2: FlexColumnWidth(.33),
-              }, children: [
-                for (var item in standupDates)
-                  TableRow(
-                      children: [
-                        TableCellPadded(child: Text(item['date-time'])),
-                        TableCellPadded(
-                          child: TableURLData(
-                            displayText: item['establishment'],
-                            url: item['url'],
-                          ),
+                ],
+              ),
+              Row(
+                children: const [
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        'Catch Joe entertaining the masses with his stand-up routine!',
+                        style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.grey,
                         ),
-                        TableCellPadded(
-                          child: TableURLData(
-                            displayText: 'Tickets',
-                            url: item['ticket-url'],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Expanded(
+                child: Table(columnWidths: const {
+                  0: FlexColumnWidth(.33),
+                  1: FlexColumnWidth(.33),
+                  2: FlexColumnWidth(.33),
+                }, children: [
+                  for (var item in standupDates)
+                    TableRow(
+                        children: [
+                          TableCellPadded(child: Text(item['date-time'])),
+                          TableCellPadded(
+                            child: TableURLData(
+                              displayText: item['establishment'],
+                              url: item['url'],
+                            ),
                           ),
-                        )
-                      ],
-                      decoration: int.parse(item['row']) % 2 == 0
-                          ? const BoxDecoration(color: Colors.white)
-                          : BoxDecoration(color: Colors.grey[200]))
-              ]),
-            )
-          ]),
+                          TableCellPadded(
+                            child: TableURLData(
+                              displayText: 'Tickets',
+                              url: item['ticket-url'],
+                            ),
+                          )
+                        ],
+                        decoration: int.parse(item['row']) % 2 == 0
+                            ? const BoxDecoration(color: Colors.white)
+                            : BoxDecoration(color: Colors.grey[200]))
+                ]),
+              )
+            ]),
+          ),
         )
       : const Text("nothing to put here");
 }
