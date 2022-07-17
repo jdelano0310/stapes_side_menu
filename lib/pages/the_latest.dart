@@ -93,10 +93,7 @@ Widget thelatestcard(theLatestItem) {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              TextButton(
-                child: const Text('BUY TICKETS'),
-                onPressed: () {/* ... */},
-              ),
+              Image.asset('images/${item.image}'),
               const SizedBox(width: 2),
               TextButton(
                 child: const Text('LISTEN'),
