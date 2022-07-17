@@ -70,7 +70,6 @@ List<Container> theLatestItems(theLatestItems) {
     (index) => Container(
       padding: const EdgeInsets.all(8.0),
       color: Colors.grey[300],
-      height: 120,
       child: thelatestcard(theLatestItems[index]),
     ),
   );
@@ -86,22 +85,35 @@ Widget thelatestcard(theLatestItem) {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
-            leading: const Icon(Icons.album),
+            leading: Icon(item.url.indexOf('twitch') > 0 ||
+                    item.url.indexOf('youtube') > 0
+                ? Icons.video_file
+                : Icons.newspaper),
             title: Text(item.title),
             subtitle: Text(item.subtitle),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image.asset('images/${item.image}'),
-              const SizedBox(width: 2),
-              TextButton(
-                child: const Text('LISTEN'),
-                onPressed: () {/* ... */},
+              ConstrainedBox(
+                constraints: const BoxConstraints(maxHeight: 300),
+                child: Image.asset(
+                  'images/${item.image}',
+                  fit: BoxFit.contain,
+                ),
               ),
-              const SizedBox(width: 2),
             ],
           ),
+          Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(item.excerpt),
+                ),
+              ),
+            ],
+          )
         ],
       ),
     ),
