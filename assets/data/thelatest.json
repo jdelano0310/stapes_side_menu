@@ -3,7 +3,7 @@
       {
         "row": "0",
         "date": "July 6, 2022",
-        "Title": "British Comedy Guide",
+        "yitle": "British Comedy Guide",
         "subtitle": "Shuffling the Pack",
         "url": "https://www.comedy.co.uk/features/shuffling-the-pack",
         "image": "7-6-22 Shuffling the Pack article.jpg",
@@ -12,7 +12,7 @@
       {
         "row": "1",
         "date": "June 3, 2022",
-        "Title": "RunBoxBreaks",
+        "title": "RunBoxBreaks",
         "subtitle": "2021 NFL PRIZM HOBBY RELEASE DAY!",
         "url": "https://www.twitch.tv/videos/1493660491",
         "image": "6-3-22 RunBoxBreaks.png",
@@ -30,7 +30,7 @@
       {
         "row": "3",
         "date": "March 12, 2022",
-        "Title": "PokerNews",
+        "title": "PokerNews",
         "subtitle": "Joe “Stapes” Stapleton on Losing GPA Trophy, Return of EPT Prague & More",
         "url": "https://www.pokernews.com/news/2022/03/joe-stapleton-ept-prague-40835.htm",
         "image": "3-12-22 Poker News.png",
@@ -39,7 +39,7 @@
       {
         "row": "4",
         "date": "March 7, 2022",
-        "Title": "Gamble Online",
+        "title": "Gamble Online",
         "subtitle": "Joe Stapleton and James Hartigan on the Return of EPT Prague",
         "url": "https://www.gambleonline.co/news/joe-stapleton-and-james-hartigan-on-the-return-of-ept-prague/",
         "image": "3-7-22 EPT Prague Gamble Online.png",
@@ -48,7 +48,7 @@
       {
         "row": "5",
         "date": "March 2, 2022",
-        "Title": "PokerNews Podcast",
+        "title": "PokerNews Podcast",
         "subtitle": "Joe Stapleton Talks EPT Prague, Tom Wheaton on BetMGM March Poker Mania",
         "url": "https://www.pokernews.com/podcast/pokernews-podcast/pokernews-podcast-joe-stapleton-tom-wheaton-40788.htm",
         "image": "3-2-22 Pokernews podcast.png",

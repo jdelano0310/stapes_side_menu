@@ -18,30 +18,25 @@ class _TheLatest extends State<TheLatest> {
 
   @override
   void initState() {
-    readStandupJson();
-    readTheLatestJson();
+    readJson();
 
     super.initState();
   }
 
   // Fetch content from the json file
-  Future<void> readStandupJson() async {
+  Future<void> readJson() async {
     final String response =
         await rootBundle.loadString('data/standupdates.json');
     final data = await json.decode(response);
+
+    final String respLatest =
+        await rootBundle.loadString('data/thelatest.json');
+    final dataLatest = await json.decode(respLatest);
+
     setState(() {
       _standupItems = data["items"];
+      _theLatestItems = dataLatest["items"];
     });
-    debugPrint(_standupItems.length.toString());
-  }
-
-  Future<void> readTheLatestJson() async {
-    final String response = await rootBundle.loadString('data/thelatest.json');
-    final data = await json.decode(response);
-    setState(() {
-      _theLatestItems = data["items"];
-    });
-    debugPrint(_theLatestItems.length.toString());
   }
 
   @override
@@ -70,11 +65,12 @@ List<Container> theLatestItems(theLatestItems) {
   return List.generate(
     theLatestItems.length,
     (index) => Container(
-      padding: const EdgeInsets.all(8.0),
-      color: Colors.grey[300],
-      height: 120,
-      child: thelatestcard(theLatestItems[index]),
-    ),
+        padding: const EdgeInsets.all(8.0),
+        color: Colors.grey[300],
+        height: 120,
+        child: thelatestcard(
+            theLatestItems[index]) //thelatestcard(theLatestItems[index]),
+        ),
   );
 }
 
