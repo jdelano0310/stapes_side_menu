@@ -18,11 +18,11 @@ class TableCellPadded extends StatelessWidget {
           padding: padding ?? const EdgeInsets.all(10.0), child: child));
 }
 
-class TableURLData extends StatelessWidget {
+class URLData extends StatelessWidget {
   final String url;
   final String displayText;
 
-  const TableURLData({super.key, required this.url, required this.displayText});
+  const URLData({super.key, required this.url, required this.displayText});
 
   @override
   Link build(BuildContext context) => Link(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stapes_side_menu/widgets/widgets.dart';
 import '/models/latestitem.dart';
 
 Widget thelatestcard(theLatestItem) {
@@ -14,7 +15,8 @@ Widget thelatestcard(theLatestItem) {
                     item.url.indexOf('youtube') > 0
                 ? Icons.video_file
                 : Icons.newspaper),
-            title: Text(item.title),
+            title: URLData(
+                url: item.url, displayText: '${item.title}   ${item.date}'),
             subtitle: Text(item.subtitle),
           ),
           SingleChildScrollView(
@@ -23,7 +25,8 @@ Widget thelatestcard(theLatestItem) {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 ConstrainedBox(
-                  constraints: const BoxConstraints(maxHeight: 300),
+                  constraints:
+                      const BoxConstraints(maxHeight: 300, minWidth: 560),
                   child: Image.asset(
                     'images/${item.image}',
                     fit: BoxFit.contain,

@@ -53,13 +53,13 @@ Widget standupdates(standupDates) {
                         children: [
                           TableCellPadded(child: Text(item['date-time'])),
                           TableCellPadded(
-                            child: TableURLData(
+                            child: URLData(
                               displayText: item['establishment'],
                               url: item['url'],
                             ),
                           ),
                           TableCellPadded(
-                            child: TableURLData(
+                            child: URLData(
                               displayText: 'Tickets',
                               url: item['ticket-url'],
                             ),
