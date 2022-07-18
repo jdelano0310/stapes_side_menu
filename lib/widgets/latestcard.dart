@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '/models/latestitem.dart';
 
 Widget thelatestcard(theLatestItem) {
-  debugPrint(theLatestItem.toString());
   var item = LatestItem.fromJson(theLatestItem);
 
   return Center(
@@ -18,17 +17,20 @@ Widget thelatestcard(theLatestItem) {
             title: Text(item.title),
             subtitle: Text(item.subtitle),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              ConstrainedBox(
-                constraints: const BoxConstraints(maxHeight: 300),
-                child: Image.asset(
-                  'images/${item.image}',
-                  fit: BoxFit.contain,
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                ConstrainedBox(
+                  constraints: const BoxConstraints(maxHeight: 300),
+                  child: Image.asset(
+                    'images/${item.image}',
+                    fit: BoxFit.contain,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Row(
             children: [
