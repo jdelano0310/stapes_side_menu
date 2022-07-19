@@ -51,13 +51,15 @@ class _TheLatest extends State<TheLatest> {
         SliverPersistentHeader(
           pinned: true,
           delegate: _SliverAppBarDelegate(
-            minHeight: 400,
+            minHeight: 200,
             maxHeight: 400,
             child: standupdates(_standupItems),
           ),
         ),
         SliverList(
-          delegate: SliverChildListDelegate(theLatestItems(_theLatestItems)),
+          delegate: SliverChildListDelegate(
+            theLatestItems(_theLatestItems),
+          ),
         )
       ],
     );
