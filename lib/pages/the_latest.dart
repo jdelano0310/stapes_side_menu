@@ -1,12 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:logging/logging.dart';
+
 import '/widgets/latestcard.dart';
 import '/widgets/standupdates.dart';
 import 'dart:math' as math;
-
-final log = Logger('ExampleLogger');
 
 class TheLatest extends StatefulWidget {
   const TheLatest({Key? key}) : super(key: key);
