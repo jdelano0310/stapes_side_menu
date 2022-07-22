@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stapes_side_menu/pages/the_latest.dart';
+import 'package:stapes_side_menu/pages/podcast_guest.dart';
 
 class MyPageArea extends StatefulWidget {
   final PageController page;
@@ -18,7 +19,7 @@ class _MyPageAreaState extends State<MyPageArea> {
         children: const [
           TheLatest(),
           Text('Podcast Host'),
-          Text('Podcast Guest'),
+          PodcastGuest(),
           Text('Articles'),
           Text('TV & Movies'),
           Text('About Joe'),
