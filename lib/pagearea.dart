@@ -3,6 +3,8 @@ import 'package:stapes_side_menu/pages/the_latest.dart';
 import 'package:stapes_side_menu/pages/podcast_guest.dart';
 import 'package:stapes_side_menu/pages/read_all_about_him.dart';
 
+import 'pages/archives.dart';
+
 class MyPageArea extends StatefulWidget {
   final PageController page;
   const MyPageArea({Key? key, required this.page}) : super(key: key);
@@ -25,7 +27,7 @@ class _MyPageAreaState extends State<MyPageArea> {
           Text('TV & Movies'),
           Text('About Joe'),
           Text('Highlights'),
-          Text('Archive')
+          Archives()
         ],
       ),
     );
