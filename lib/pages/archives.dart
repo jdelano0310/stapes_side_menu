@@ -53,8 +53,8 @@ class _Archives extends State<Archives> {
         SliverList(
           delegate: SliverChildListDelegate(<Widget>[
             archivelist(_archivesHost),
-            archivelist(_archivesGuest),
-            archivelist(_archivesArticles),
+            //archivelist(_archivesGuest),
+            //archivelist(_archivesArticles),
           ]),
         )
       ],
