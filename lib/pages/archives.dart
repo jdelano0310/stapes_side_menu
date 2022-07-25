@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'dart:math' as math;
 
 import '/widgets/archivelist.dart';
 
@@ -47,17 +48,61 @@ class _Archives extends State<Archives> {
   @override
   Widget build(BuildContext context) {
     final scrollController = ScrollController();
-    return CustomScrollView(
+    return SingleChildScrollView(
       controller: scrollController,
-      slivers: [
-        SliverList(
-          delegate: SliverChildListDelegate(<Widget>[
-            archivelist(_archivesHost),
-            //archivelist(_archivesGuest),
-            //archivelist(_archivesArticles),
-          ]),
-        )
-      ],
+      scrollDirection: Axis.vertical,
+      child: Column(children: [
+        displayTitle(),
+        archivelist("As a podcast host", _archivesHost),
+        archivelist("As a podcast guest", _archivesGuest),
+        archivelist("Articles", _archivesArticles),
+      ]),
     );
   }
+}
+
+Widget displayTitle() {
+  return Container(
+    child: Padding(
+      padding: const EdgeInsets.all(25.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            children: const [
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'Stapes archive',
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: const [
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'Here you\'ll find links to older podcasts as a host/guest, articles, and other stuff we find about Joe',
+                    style: TextStyle(
+                      fontSize: 22,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
 }
