@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'dart:math' as math;
 
+import '../widgets/widgets.dart';
 import '/widgets/archivelist.dart';
 
 class Archives extends StatefulWidget {
@@ -52,57 +52,15 @@ class _Archives extends State<Archives> {
       controller: scrollController,
       scrollDirection: Axis.vertical,
       child: Column(children: [
-        displayTitle(),
+        const DisplayTitle(
+          title: 'Stapes archive',
+          subtitle:
+              'Here you\'ll find links to older podcasts as a host/guest, articles, and other stuff we find about Joe',
+        ),
         archivelist("As a podcast host", _archivesHost),
         archivelist("As a podcast guest", _archivesGuest),
         archivelist("Articles", _archivesArticles),
       ]),
     );
   }
-}
-
-Widget displayTitle() {
-  return Container(
-    child: Padding(
-      padding: const EdgeInsets.all(25.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            children: const [
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    'Stapes archive',
-                    style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: const [
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    'Here you\'ll find links to older podcasts as a host/guest, articles, and other stuff we find about Joe',
-                    style: TextStyle(
-                      fontSize: 22,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    ),
-  );
 }

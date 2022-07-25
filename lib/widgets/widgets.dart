@@ -42,3 +42,54 @@ class URLData extends StatelessWidget {
         ),
       );
 }
+
+class DisplayTitle extends StatelessWidget {
+  final String title;
+  final String subtitle;
+
+  const DisplayTitle({super.key, required this.title, required this.subtitle});
+  @override
+  Container build(BuildContext context) => Container(
+        child: Padding(
+          padding: const EdgeInsets.all(25.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        title,
+                        style: const TextStyle(
+                          fontSize: 26,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        subtitle,
+                        style: const TextStyle(
+                          fontSize: 22,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+}
