@@ -11,12 +11,15 @@ Widget archivelist(String title, list) {
       : const Text("");
 }
 
+// this is used by the About Joe page as well which doesn't have a title for the list, thus the check for blank
 List<Widget> bulletItems(list) {
   List<Widget> bulletitems = <Widget>[];
   for (var item in list) {
     bulletitems.add(Row(
       children: [
-        Expanded(child: Text(item["title"])),
+        !(item["title"] == '')
+            ? Expanded(child: Text(item["title"]))
+            : const SizedBox(width: 1),
         const SizedBox(
           width: 5,
         ),

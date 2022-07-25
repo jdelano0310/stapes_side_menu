@@ -34,33 +34,38 @@ class _AboutJoeState extends State<AboutJoe> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        const DisplayTitle(
-          title: 'About Joe “Stapes” Stapleton',
-          subtitle: 'Born: October 6, 1982 in upstate New York',
-        ),
-        paragraph('Pre-Poker', isbold: true),
-        paragraph(
-            'Joe grew up in upstate New York in Albany. After graduating high school, he decided on Boston University and headed out to college at 17 years old.'),
-        paragraph(
-            'He graduated after 3 years and 5 days after moved to Los Angeles at age 20 to be a writer. Where he landed his first job at MADtv in 2002 as a Production Assistant and eventually became a Production Coordinator by 2004.'),
-        const SizedBox(height: 15),
-        paragraph('Here comes Poker', isbold: true),
-        paragraph(
-            'In 2005, his best friend got an internship with Card Player magazine and was going to Vegas to cover the WSOP. Joe was asked to drive his friend, which he did, upon arriving Card Player asked his friend if he knew of anyone else that could write. His friend answered yes and so Joe’s poker career was born.'),
-        paragraph(
-            'In 2006, he returned to Vegas and Card Player magazine, though not as a writer but as a video producer. This, however, did not work out.'),
-        paragraph(
-            'In 2007, Full Tilt Poker decided to create a podcast, though they weren’t called podcasts then, called PokerWire Radio. Joe joined Joe Sebok and the late Gavin Smith as hosts of the show. He kept his job at MADtv through most of the run until he was offered a full-time position hosting, executive producing, and overall make it his own with that he left MADtv.'),
-        paragraph(
-            'In 2011, The Unlawful Internet Gambling Enforcement Act was enforced on the online poker world and that was the end of PokerWire Radio.'),
-        const SizedBox(height: 15),
-        paragraph('Websites where you can find more info', isbold: true),
-        archivelist("", _otherSites),
-      ],
+    final scrollController = ScrollController();
+    return SingleChildScrollView(
+      controller: scrollController,
+      scrollDirection: Axis.vertical,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const DisplayTitle(
+            title: 'About Joe “Stapes” Stapleton',
+            subtitle: 'Born: October 6, 1982 in upstate New York',
+          ),
+          paragraph('Pre-Poker', isbold: true),
+          paragraph(
+              'Joe grew up in upstate New York in Albany. After graduating high school, he decided on Boston University and headed out to college at 17 years old.'),
+          paragraph(
+              'He graduated after 3 years and 5 days after moved to Los Angeles at age 20 to be a writer. Where he landed his first job at MADtv in 2002 as a Production Assistant and eventually became a Production Coordinator by 2004.'),
+          const SizedBox(height: 15),
+          paragraph('Here comes Poker', isbold: true),
+          paragraph(
+              'In 2005, his best friend got an internship with Card Player magazine and was going to Vegas to cover the WSOP. Joe was asked to drive his friend, which he did, upon arriving Card Player asked his friend if he knew of anyone else that could write. His friend answered yes and so Joe’s poker career was born.'),
+          paragraph(
+              'In 2006, he returned to Vegas and Card Player magazine, though not as a writer but as a video producer. This, however, did not work out.'),
+          paragraph(
+              'In 2007, Full Tilt Poker decided to create a podcast, though they weren’t called podcasts then, called PokerWire Radio. Joe joined Joe Sebok and the late Gavin Smith as hosts of the show. He kept his job at MADtv through most of the run until he was offered a full-time position hosting, executive producing, and overall make it his own with that he left MADtv.'),
+          paragraph(
+              'In 2011, The Unlawful Internet Gambling Enforcement Act was enforced on the online poker world and that was the end of PokerWire Radio.'),
+          const SizedBox(height: 15),
+          paragraph('Websites where you can find more info', isbold: true),
+          archivelist("", _otherSites),
+        ],
+      ),
     );
   }
 }
@@ -79,17 +84,4 @@ Row paragraph(contents, {isbold = false}) {
       )
     ],
   );
-}
-
-class OtherSite {
-  String title;
-  String urltitle;
-  String url;
-
-  OtherSite(this.title, this.urltitle, this.url);
-
-  @override
-  String toString() {
-    return '{ $title, $urltitle, $url }';
-  }
 }

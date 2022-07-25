@@ -11,7 +11,7 @@ class BulletList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Padding(
-        padding: const EdgeInsets.only(left: 25, bottom: 8.0),
+        padding: const EdgeInsets.only(left: 25, top: 8, right: 25),
         child: Text(
           listTitle,
           style: const TextStyle(fontWeight: FontWeight.bold),
