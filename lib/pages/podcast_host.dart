@@ -58,6 +58,12 @@ class _PodcastHost extends State<PodcastHost> {
                     fontWeight: FontWeight.w600,
                     color: Color.fromARGB(1, 191, 157, 65)),
               ),
+              const Text(' click '),
+              const URLData(
+                  url:
+                      'https://www.youtube.com/watch?v=E4bYuqnDXVE?autoplay=1&start=5500&end=5620',
+                  displayText: 'here '),
+              const Text('to watch Joe\'s acceptance speech')
             ],
           ),
           const SizedBox(height: 15),
