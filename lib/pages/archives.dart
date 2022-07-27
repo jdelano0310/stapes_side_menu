@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:stapes_side_menu/classes/readjson.dart';
 
 import '../widgets/widgets.dart';
 import '/widgets/archivelist.dart';
@@ -17,12 +16,10 @@ class _Archives extends State<Archives> {
   List _archivesHost = [];
   List _archivesGuest = [];
   List _archivesArticles = [];
-  ReadJSON fromClass = ReadJSON('data/archiveAsHost.json', 'items');
 
   @override
   void initState() {
-    _archivesHost = fromClass.readJson();
-
+    readJson();
     super.initState();
   }
 
