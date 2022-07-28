@@ -5,6 +5,7 @@ import 'package:stapes_side_menu/pages/read_all_about_him.dart';
 
 import 'pages/aboutjoe.dart';
 import 'pages/archives.dart';
+import 'pages/podcast_host.dart';
 
 class MyPageArea extends StatefulWidget {
   final PageController page;
@@ -22,7 +23,7 @@ class _MyPageAreaState extends State<MyPageArea> {
         controller: widget.page,
         children: const [
           TheLatest(),
-          Text('Podcast Host'),
+          PodcastHost(),
           PodcastGuest(),
           ReadAllAboutHim(),
           Text('TV & Movies'),
