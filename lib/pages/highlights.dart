@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../widgets/bulletlist.dart';
 import '../widgets/widgets.dart';
-import '../widgets/urllist.dart';
 
 class Highlights extends StatefulWidget {
   const Highlights({Key? key}) : super(key: key);
@@ -23,12 +23,12 @@ class _Highlights extends State<Highlights> {
 
   // Fetch content from the json file
   Future<void> readJson() async {
-    final String respArchivesHost =
+    final String respHighlights =
         await rootBundle.loadString('data/highlights.json');
-    final dataArchivesHost = await json.decode(respArchivesHost);
+    final data = await json.decode(respHighlights);
 
     setState(() {
-      _archivesHost = dataArchivesHost["items"];
+      _archivesHost = data["items"];
     });
   }
 
@@ -43,8 +43,38 @@ class _Highlights extends State<Highlights> {
           title: 'Highlights',
           subtitle: 'Things we found funny, poignant, or noteworthy',
         ),
-        urllist("As a podcast host", _archivesHost),
+        urllist("", _archivesHost),
       ]),
     );
   }
+}
+
+Widget urllist(String title, list) {
+  // Display the data loaded from sample.json
+  return list.isNotEmpty
+      ? Column(children: [
+          BulletList(widgets: bulletItems(list), listTitle: title),
+        ])
+      : const Text("");
+}
+
+// this is used by the About Joe page as well which doesn't have a title for the list, thus the check for blank
+List<Widget> bulletItems(list) {
+  List<Widget> bulletitems = <Widget>[];
+  for (var item in list) {
+    bulletitems.add(Row(
+      children: [
+        !(item["title"] == '')
+            ? Expanded(child: Text(item["title"]))
+            : const SizedBox(width: 1),
+        const SizedBox(
+          width: 5,
+        ),
+        Expanded(
+            child: URLData(url: item["url"], displayText: item["urltext"])),
+      ],
+    ));
+  }
+
+  return bulletitems;
 }
