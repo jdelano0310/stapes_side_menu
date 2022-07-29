@@ -24,7 +24,7 @@ class _PodcastHost extends State<PodcastHost> {
 
   Future<void> readJson() async {
     final String respArchivesHost =
-        await rootBundle.loadString('data/aboutJoeOtherSites.json');
+        await rootBundle.loadString('data/pokerintheears.json');
     final dataOtherSites = await json.decode(respArchivesHost);
 
     setState(() {
@@ -50,7 +50,8 @@ class _PodcastHost extends State<PodcastHost> {
           paragraph(
               'Every week, the hosts of PokerStars TV (James Hartigan and Joe Stapleton) bring you a behind-the-scenes look at what it’s like being two regular folks on the international poker circuit. Told from the perspective of a cranky British dad (Hartigan) and an undateable American bachelor (Stapes), ‘Poker in the Ears’ is a mostly uncensored take on the world of professional poker. The hosts also regularly call in favours, in the form of guest spots from their big-shot celebrity poker-playing friends. And they routinely hold on-air competitions, providing chances for listeners to join them on tour.'),
           Padding(
-            padding: const EdgeInsets.only(left: 25, top: 8, right: 25),
+            padding:
+                const EdgeInsets.only(left: 25, top: 15, bottom: 15, right: 25),
             child: SizedBox(
               width: double.infinity,
               child: Wrap(
@@ -75,7 +76,7 @@ class _PodcastHost extends State<PodcastHost> {
               ),
             ),
           ),
-          archivelist("Websites where you can find more info", _otherSites),
+          archivelist("Some services you can find it on", _otherSites),
         ],
       ),
     );

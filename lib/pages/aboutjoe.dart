@@ -62,8 +62,7 @@ class _AboutJoeState extends State<AboutJoe> {
           paragraph(
               'In 2011, The Unlawful Internet Gambling Enforcement Act was enforced on the online poker world and that was the end of PokerWire Radio.'),
           const SizedBox(height: 15),
-          paragraph('Websites where you can find more info', isbold: true),
-          archivelist("", _otherSites),
+          archivelist("Websites where you can find more info", _otherSites),
         ],
       ),
     );

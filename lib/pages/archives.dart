@@ -38,9 +38,7 @@ class _Archives extends State<Archives> {
     final dataArchivesArticles = await json.decode(respArchivesArticles);
 
     setState(() {
-      debugPrint(_archivesHost.toString());
       _archivesHost = dataArchivesHost["items"];
-
       _archivesGuest = dataArchivesGuest["items"];
       _archivesArticles = dataArchivesArticles["items"];
     });
