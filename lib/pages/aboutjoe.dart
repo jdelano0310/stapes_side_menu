@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../widgets/archivelist.dart';
+import '../widgets/urllist.dart';
 import '/widgets/widgets.dart';
 
 class AboutJoe extends StatefulWidget {
@@ -62,7 +62,7 @@ class _AboutJoeState extends State<AboutJoe> {
           paragraph(
               'In 2011, The Unlawful Internet Gambling Enforcement Act was enforced on the online poker world and that was the end of PokerWire Radio.'),
           const SizedBox(height: 15),
-          archivelist("Websites where you can find more info", _otherSites),
+          urllist("Websites where you can find more info", _otherSites),
         ],
       ),
     );

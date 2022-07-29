@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../widgets/widgets.dart';
-import '/widgets/archivelist.dart';
+import '../widgets/urllist.dart';
 
 class Archives extends StatefulWidget {
   const Archives({Key? key}) : super(key: key);
@@ -56,9 +56,9 @@ class _Archives extends State<Archives> {
           subtitle:
               'Here you\'ll find links to older podcasts as a host/guest, articles, and other stuff we find about Joe',
         ),
-        archivelist("As a podcast host", _archivesHost),
-        archivelist("As a podcast guest", _archivesGuest),
-        archivelist("Articles", _archivesArticles),
+        urllist("As a podcast host", _archivesHost),
+        urllist("As a podcast guest", _archivesGuest),
+        urllist("Articles", _archivesArticles),
       ]),
     );
   }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '/widgets/widgets.dart';
 import '/widgets/bulletlist.dart';
 
-Widget archivelist(String title, list) {
+Widget urllist(String title, list) {
   // Display the data loaded from sample.json
   return list.isNotEmpty
       ? Column(children: [

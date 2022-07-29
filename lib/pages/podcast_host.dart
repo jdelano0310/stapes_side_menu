@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../widgets/archivelist.dart';
+import '../widgets/urllist.dart';
 import '/widgets/widgets.dart';
 
 class PodcastHost extends StatefulWidget {
@@ -76,7 +76,7 @@ class _PodcastHost extends State<PodcastHost> {
               ),
             ),
           ),
-          archivelist("Some services you can find it on", _otherSites),
+          urllist("Some services you can find it on", _otherSites),
         ],
       ),
     );
