@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 
 import '../widgets/bulletlist.dart';
 import '../widgets/widgets.dart';
+import 'package:darq/darq.dart';
 
 class Highlights extends StatefulWidget {
   const Highlights({Key? key}) : super(key: key);
@@ -13,7 +14,8 @@ class Highlights extends StatefulWidget {
 }
 
 class _Highlights extends State<Highlights> {
-  List _archivesHost = [];
+  List _highlights = [];
+  List _sections = [];
 
   @override
   void initState() {
@@ -28,7 +30,9 @@ class _Highlights extends State<Highlights> {
     final data = await json.decode(respHighlights);
 
     setState(() {
-      _archivesHost = data["items"];
+      _highlights = data["items"];
+      _sections = _highlights.distinct((item) => item.section).toList();
+      debugPrint(_sections.toString());
     });
   }
 
@@ -43,7 +47,7 @@ class _Highlights extends State<Highlights> {
           title: 'Highlights',
           subtitle: 'Things we found funny, poignant, or noteworthy',
         ),
-        urllist("", _archivesHost),
+        urllist("", _highlights),
       ]),
     );
   }
