@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 
 import '../widgets/bulletlist.dart';
 import '../widgets/widgets.dart';
-import 'package:darq/darq.dart';
 
 class Highlights extends StatefulWidget {
   const Highlights({Key? key}) : super(key: key);
@@ -15,7 +14,7 @@ class Highlights extends StatefulWidget {
 
 class _Highlights extends State<Highlights> {
   List _highlights = [];
-  List _sections = [];
+  List<String> _sections = [];
 
   @override
   void initState() {
@@ -31,9 +30,24 @@ class _Highlights extends State<Highlights> {
 
     setState(() {
       _highlights = data["items"];
-      _sections = _highlights.distinct((item) => item.section).toList();
+      _sections = findDistinctSections(_highlights);
       debugPrint(_sections.toString());
     });
+  }
+
+  List<String> findDistinctSections(list) {
+    // loop the passed json list and find each of the different section names contained
+    String currentSection = '';
+    List<String> sections = [];
+    for (var item in list) {
+      debugPrint(item['section']);
+      if (item['section'].toString() != currentSection) {
+        debugPrint(currentSection);
+        sections.add(item['section']);
+        currentSection = item['section'];
+      }
+    }
+    return sections;
   }
 
   @override

@@ -5,6 +5,7 @@ import 'package:stapes_side_menu/pages/read_all_about_him.dart';
 
 import 'pages/aboutjoe.dart';
 import 'pages/archives.dart';
+import 'pages/highlights.dart';
 import 'pages/podcast_host.dart';
 
 class MyPageArea extends StatefulWidget {
@@ -28,7 +29,7 @@ class _MyPageAreaState extends State<MyPageArea> {
           ReadAllAboutHim(),
           Text('TV & Movies'),
           AboutJoe(),
-          Text('Highlights'),
+          Highlights(),
           Archives()
         ],
       ),
