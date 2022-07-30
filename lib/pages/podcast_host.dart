@@ -67,7 +67,7 @@ class _PodcastHost extends State<PodcastHost> {
                   Text(' click '),
                   URLData(
                     url:
-                        'https://www.youtube.com/watch?v=E4bYuqnDXVE?autoplay=1&start=5500&end=5620',
+                        'https://www.youtube.com/watch?v=E4bYuqnDXVE?autoplay=1&start=4897&end=5026',
                     displayText: 'here ',
                   ),
                   Text('to watch Joe\'s acceptance speech'),

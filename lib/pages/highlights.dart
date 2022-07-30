@@ -31,7 +31,6 @@ class _Highlights extends State<Highlights> {
     setState(() {
       _highlights = data["items"];
       _sections = findDistinctSections(_highlights);
-      debugPrint(_sections.toString());
     });
   }
 
@@ -40,9 +39,7 @@ class _Highlights extends State<Highlights> {
     String currentSection = '';
     List<String> sections = [];
     for (var item in list) {
-      debugPrint(item['section']);
       if (item['section'].toString() != currentSection) {
-        debugPrint(currentSection);
         sections.add(item['section']);
         currentSection = item['section'];
       }
@@ -61,37 +58,35 @@ class _Highlights extends State<Highlights> {
           title: 'Highlights',
           subtitle: 'Things we found funny, poignant, or noteworthy',
         ),
-        urllist("", _highlights),
+        urllist(_highlights, _sections),
       ]),
     );
   }
 }
 
-Widget urllist(String title, list) {
+Widget urllist(list, sections) {
   // Display the data loaded from sample.json
   return list.isNotEmpty
       ? Column(children: [
-          BulletList(widgets: bulletItems(list), listTitle: title),
+          for (var section in sections)
+            BulletList(widgets: bulletItems(list, section), listTitle: section),
         ])
       : const Text("");
 }
 
-// this is used by the About Joe page as well which doesn't have a title for the list, thus the check for blank
-List<Widget> bulletItems(list) {
+// create a list of just those items that have the matching section value
+List<Widget> bulletItems(list, section) {
+  debugPrint('getting items for $section');
   List<Widget> bulletitems = <Widget>[];
   for (var item in list) {
-    bulletitems.add(Row(
-      children: [
-        !(item["title"] == '')
-            ? Expanded(child: Text(item["title"]))
-            : const SizedBox(width: 1),
-        const SizedBox(
-          width: 5,
-        ),
-        Expanded(
-            child: URLData(url: item["url"], displayText: item["urltext"])),
-      ],
-    ));
+    if (item['section'] == section) {
+      bulletitems.add(Row(
+        children: [
+          Expanded(
+              child: URLData(url: item["url"], displayText: item["urltext"])),
+        ],
+      ));
+    }
   }
 
   return bulletitems;
